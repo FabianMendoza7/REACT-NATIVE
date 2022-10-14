@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Instalación React Native Windows - Android</title>
+    <link href="css/prism.css"  rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inconsolata&family=Poppins:wght@300;700,900&display=swap" rel="stylesheet"> 
+    <link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+
+<header class="header">
+    <h1>React Native - Crea aplicaciones para Android y iOS c/ React</h1>
+    <p class="tagline">Ambiente De Desarrollo en Windows - Crear apps para Android</p>
+    <p>Un curso de: Juan Pablo De la torre Valdez. <a href="https://twitter.com/codigoconjuan" target="_blank"> @codigoconjuan</a></p>
+    <a href="https://codigoconjuan.com" target="_blank">Visita mi sitio</a>
+</header>
+
+<nav class="navegacion">
+    <div class="contenedor">
+        <a href="#video-01-01">1.- Instalar Chocolatey</a>
+        <a href="#video-01-02">2.- Instalar Node y Java Development Kit</a>
+        <a href="#video-01-03">3.- Instalar Android Studio</a>
+        <a href="#video-01-04">4.- Android SDK</a>
+        <a href="#video-01-05">5.- Android AVD (Android Virtual Device)</a>
+        <a href="#video-01-06">6.- Añadir Android al Path</a>
+        <a href="#video-01-07">7.- Probar Emuladores</a>
+        <a href="#video-01-08">8.- Conectar un Dispositivo Físico</a>
+        <a href="#video-01-09">9.- Creando y Compilando tu primer App</a>
+        <a href="#video-01-10">10.- Instalar React Dev Tools</a>
+    </div>
+</nav>
+
+<div id="video-01-01">
+    <li>Instalar Chocolatey</li>
+    <pre class="language-none">
+        <code class="language-none">
+            Los pasos a realizar se muestran en el video</code>
+    </pre>
+</div>
+
+<div id="video-01-02">
+    <li>Instalar Node y Java Development Kit</li>
+    <pre class="language-none">
+        <code class="language-none">
+            choco install -y nodejs.install openjdk8</code>
+    </pre>
+</div>
+
+<div id="video-01-03">
+    <li>Instalar Android Studio</li>
+    <pre class="language-none">
+        <code class="language-none">
+            Los pasos a realizar se muestran en el video</code>
+    </pre>
+</div>
+
+<div id="video-01-04">
+    <li>Android SDK</li>
+    <pre class="language-none">
+        <code class="language-none">
+            Los pasos a realizar se muestran en el video</code>
+    </pre>
+</div>
+
+<div id="video-01-05">
+    <li>Android AVD (Android Virtual Device)</li>
+    <pre class="language-none">
+        <code class="language-none">
+            Los pasos a realizar se muestran en el video</code>
+    </pre>
+</div>
+
+
+<div id="video-01-06">
+    <li>Añadir Android al Path</li>
+    <pre class="language-none">
+        <code class="language-none">
+            Los pasos a realizar se muestran en el video</code>
+    </pre>
+</div>
+
+<div id="video-01-07">
+    <li>Probar Emuladores</li>
+    <pre class="language-none">
+        <code class="language-none">
+            emulator
+            emulator -list-avds 
+            emulator -avd 'dispositivo'
+            </code>
+    </pre>
+</div>
+
+<div id="video-01-08">
+    <li>Conectar un Dispositivo Físico</li>
+    <pre class="language-none">
+        <code class="language-none">
+            Los pasos a realizar se muestran en el video</code>
+    </pre>
+</div>
+
+
+
+<div id="video-01-09">
+    <li>Crear Primera App para iOS</li>
+    <pre class="language-none">
+        <code class="language-none">
+            npx react-native init citas 
+            npx react-native run-android</code>
+    </pre>
+</div>
+
+
+<div id="video-01-10">
+    <li>Instalar React Dev Tools</li>
+    <pre class="language-none">
+        <code class="language-none">
+            npm install -g react-devtools</code>
+    </pre>
+</div>
+
+
+
+    <script src="js/prism.js"></script>
+    <script>
+     
+            const enlaces = document.querySelectorAll('.navegacion a');
+            enlaces.forEach(enlace => {
+                enlace.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    const seccion = document.querySelector( e.target.attributes.href.value );
+                    seccion.scrollIntoView({block: "start", behavior: "smooth"});
+                })
+            });
+    </script>
+</body>
+</html>
