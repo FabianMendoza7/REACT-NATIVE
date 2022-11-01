@@ -1,17 +1,14 @@
-import React from 'react';
+import { useState } from 'react';
 import {
   SafeAreaView,
-  ScrollView,
-  StatusBar,
   StyleSheet,
   Text,
-  useColorScheme,
-  View,
-  Button,
+  Modal,
   Pressable
 } from 'react-native';
 
 const App = () => {
+  const [modalVisible, setModalVisible] = useState(false)
 
   const nuevaCitaHandler = () => {
 
@@ -25,11 +22,20 @@ const App = () => {
       </Text>
 
       <Pressable 
-        onPress={nuevaCitaHandler}
         style={styles.btnNuevaCita}
+        onPress={() => setModalVisible(true)}
       >
-        <Text style={styles.btnTextoNuevaCita}>Nueva Cita</Text>
+        <Text style={styles.btnTextoNuevaCita}>
+          Nueva Cita
+        </Text>
       </Pressable>
+
+      <Modal
+        animationType='slide'
+        visible={modalVisible}
+      >
+        <Text>Desde Modal</Text>
+      </Modal>
     </SafeAreaView>
   );
 };
