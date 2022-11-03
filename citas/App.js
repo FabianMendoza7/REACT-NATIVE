@@ -3,16 +3,12 @@ import {
   SafeAreaView,
   StyleSheet,
   Text,
-  Modal,
   Pressable
 } from 'react-native';
+import Formulario from './src/components/Formulario';
 
 const App = () => {
   const [modalVisible, setModalVisible] = useState(false)
-
-  const nuevaCitaHandler = () => {
-
-  }
   
   return (
     <SafeAreaView style={styles.container}>
@@ -30,12 +26,9 @@ const App = () => {
         </Text>
       </Pressable>
 
-      <Modal
-        animationType='slide'
-        visible={modalVisible}
-      >
-        <Text>Desde Modal</Text>
-      </Modal>
+      <Formulario 
+        modalVisible={modalVisible}
+      />
     </SafeAreaView>
   );
 };
