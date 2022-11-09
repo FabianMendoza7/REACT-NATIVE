@@ -1,8 +1,16 @@
-import React from 'react'
-import {Modal, Text, SafeAreaView, StyleSheet, TextInput, View, ScrollView} from 'react-native'
+import React, { useState } from 'react'
+import { Modal, Text, SafeAreaView, StyleSheet, TextInput, View, ScrollView } from 'react-native'
+import DatePicker from 'react-native-date-picker'
 
 const Formulario = ({modalVisible}) => {
-  return (
+    const [paciente, setPaciente] = useState('')
+    const [propietario, setPropietario] = useState('')
+    const [email, setEmail] = useState('')
+    const [telefono, setTelefono] = useState('')
+    const [fecha, setFecha] = useState(new Date())
+    const [sintomas, setSintomas] = useState('')
+
+    return (
     <Modal
         animationType='slide'
         visible={modalVisible}
@@ -28,6 +36,8 @@ const Formulario = ({modalVisible}) => {
                         style={styles.input}
                         placeholder='Nombre Paciente'
                         placeholderTextColor={'#666'}
+                        value={paciente}
+                        onChangeText={setPaciente}
                     />
                 </View>
 
@@ -37,6 +47,8 @@ const Formulario = ({modalVisible}) => {
                         style={styles.input}
                         placeholder='Nombre Propietario'
                         placeholderTextColor={'#666'}
+                        value={propietario}
+                        onChangeText={setPropietario}
                     />
                 </View>
 
@@ -47,6 +59,8 @@ const Formulario = ({modalVisible}) => {
                         placeholder='Email Propietario'
                         placeholderTextColor={'#666'}
                         keyboardType='email-address'
+                        value={email}
+                        onChangeText={setEmail}
                     />
                 </View>
 
@@ -57,8 +71,22 @@ const Formulario = ({modalVisible}) => {
                         placeholder='Teléfono Propietario'
                         placeholderTextColor={'#666'}
                         keyboardType='number-pad'
+                        value={telefono}
+                        onChangeText={setTelefono}
+                        maxLength={10}
                     />
-                </View>     
+                </View>
+
+                <View style={styles.campo}>
+                    <Text style={styles.label}>Teléfono Propietario</Text>
+                    <View style={styles.fechaContenedor}>
+                        <DatePicker
+                            date={fecha}
+                            locale='es'
+                            onDateChange={(date) => setFecha(date)}
+                        />
+                    </View>
+                </View>
 
                 <View style={styles.campo}>
                     <Text style={styles.label}>Síntomas</Text>
@@ -66,12 +94,16 @@ const Formulario = ({modalVisible}) => {
                         style={styles.input}
                         placeholder='Síntomas paciente'
                         placeholderTextColor={'#666'}
+                        value={sintomas}
+                        onChangeText={setSintomas}
+                        multiline={true}
+                        numberOfLines={4}
                     />
                 </View>
             </ScrollView>                          
         </SafeAreaView>
     </Modal>        
-  )
+    )
 }
 
 const styles = StyleSheet.create({
@@ -103,6 +135,10 @@ const styles = StyleSheet.create({
     input: {
         backgroundColor: '#FFF',
         padding: 15,
+        borderRadius: 10
+    },
+    fechaContenedor: {
+        backgroundColor: '#FFF',
         borderRadius: 10
     }
 })
