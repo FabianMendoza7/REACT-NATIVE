@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
-import { Modal, Text, SafeAreaView, StyleSheet, TextInput, View, ScrollView } from 'react-native'
+import { Modal, Text, SafeAreaView, StyleSheet, TextInput, View, ScrollView, Pressable } from 'react-native'
 import DatePicker from 'react-native-date-picker'
 
-const Formulario = ({modalVisible}) => {
+const Formulario = ({modalVisible, setModalVisible}) => {
     const [paciente, setPaciente] = useState('')
     const [propietario, setPropietario] = useState('')
     const [email, setEmail] = useState('')
@@ -29,6 +29,13 @@ const Formulario = ({modalVisible}) => {
                         Cita
                     </Text>
                 </Text>
+
+                <Pressable 
+                    style={styles.btnCancelar}
+                    onLongPress={() => setModalVisible(!modalVisible)}
+                >
+                    <Text style={styles.btnCancelarTexto}>X Cancelar</Text>
+                </Pressable>
 
                 <View style={styles.campo}>
                     <Text style={styles.label}>Nombre Paciente</Text>
@@ -121,6 +128,21 @@ const styles = StyleSheet.create({
     tituloBold: {
         fontWeight: '900'
     },
+    btnCancelar: {
+        marginVertical: 30,
+        backgroundColor: '#5827A4',
+        marginHorizontal: 30,
+        padding: 20,
+        borderRadius: 10,
+        borderWidth: 1,
+        borderColor: '#FFF'
+    },
+    btnCancelarTexto: {
+        color: '#FFF',
+        textAlign: 'center',
+        fontWeight: '900',
+        fontSize: 20
+    },    
     campo: {
         marginTop: 10,
         marginHorizontal: 30

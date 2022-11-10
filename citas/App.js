@@ -19,7 +19,7 @@ const App = () => {
 
       <Pressable 
         style={styles.btnNuevaCita}
-        onPress={() => setModalVisible(true)}
+        onPress={() => setModalVisible(!modalVisible)}
       >
         <Text style={styles.btnTextoNuevaCita}>
           Nueva Cita
@@ -28,6 +28,7 @@ const App = () => {
 
       <Formulario 
         modalVisible={modalVisible}
+        setModalVisible={setModalVisible}
       />
     </SafeAreaView>
   );
