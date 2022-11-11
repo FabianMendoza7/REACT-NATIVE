@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import { Modal, Text, SafeAreaView, StyleSheet, TextInput, View, ScrollView, Pressable, Alert } from 'react-native'
 import DatePicker from 'react-native-date-picker'
 
-const Formulario = ({modalVisible, setModalVisible}) => {
+const Formulario = ({modalVisible, setModalVisible, pacientes, setPacientes}) => {
     const [paciente, setPaciente] = useState('')
     const [propietario, setPropietario] = useState('')
     const [email, setEmail] = useState('')
@@ -19,6 +19,26 @@ const Formulario = ({modalVisible, setModalVisible}) => {
             )
             return;
         }
+
+        const nuevoPaciente = {
+            id: Date.now(),
+            paciente, 
+            propietario,
+            email,
+            telefono,
+            fecha,
+            sintomas
+        }
+
+        setPacientes([...pacientes, nuevoPaciente])
+        setModalVisible(!modalVisible)
+
+        setPaciente('')
+        setPropietario('')
+        setEmail('')
+        setTelefono('')
+        setFecha(new Date())
+        setSintomas('')
     }
 
     return (
@@ -96,7 +116,7 @@ const Formulario = ({modalVisible, setModalVisible}) => {
                 </View>
 
                 <View style={styles.campo}>
-                    <Text style={styles.label}>Teléfono Propietario</Text>
+                    <Text style={styles.label}>Fecha</Text>
                     <View style={styles.fechaContenedor}>
                         <DatePicker
                             date={fecha}
