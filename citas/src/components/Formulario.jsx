@@ -1,14 +1,34 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Modal, Text, SafeAreaView, StyleSheet, TextInput, View, ScrollView, Pressable, Alert } from 'react-native'
 import DatePicker from 'react-native-date-picker'
 
-const Formulario = ({modalVisible, setModalVisible, pacientes, setPacientes}) => {
+const Formulario = ({
+    modalVisible, 
+    setModalVisible, 
+    pacientes, 
+    setPacientes,
+    paciente: pacienteObj
+}) => {
+    const [id, setId] = useState('')
     const [paciente, setPaciente] = useState('')
     const [propietario, setPropietario] = useState('')
     const [email, setEmail] = useState('')
     const [telefono, setTelefono] = useState('')
     const [fecha, setFecha] = useState(new Date())
     const [sintomas, setSintomas] = useState('')
+
+    useEffect(() => {
+        // Este useEffect se va a ejecutar una sola vez (cuando el componente esté lsito).
+        if(Object.keys(pacienteObj).length > 0){
+            setId(pacienteObj.id)
+            setPaciente(pacienteObj.paciente)
+            setPropietario(pacienteObj.propietario)
+            setEmail(pacienteObj.email)
+            setTelefono(pacienteObj.telefono)
+            setFecha(pacienteObj.fecha)
+            setSintomas(pacienteObj.sintomas)
+        }
+    }, [])
 
     const handleCita = () => {
         // Validar

@@ -60,6 +60,7 @@ const App = () => {
         setModalVisible={setModalVisible}
         pacientes={pacientes}
         setPacientes={setPacientes}
+        paciente={setPaciente}
       />
     </SafeAreaView>
   );
