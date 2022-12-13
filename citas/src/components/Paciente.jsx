@@ -1,88 +1,99 @@
 import React from 'react'
-import {Text, View, StyleSheet, Pressable} from 'react-native'
+import { Text, View, StyleSheet, Pressable } from 'react-native'
+import { formatearFecha } from '../helpers'
 
-const Paciente = ({item, setModalVisible, pacienteEditar}) => {
+const Paciente = ({
+    item, 
+    setModalVisible, 
+    setPaciente,
+    pacienteEditar, 
+    pacienteEliminar, 
+    setModalPaciente
+}) => {
+
     const { paciente, fecha, id } = item
-    const formatearFecha = fecha => {
-        const nuevaFecha = new Date(fecha)
-        const opciones = {
-            weekday: 'long',
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric'
-        }
 
-        return nuevaFecha.toLocaleDateString('es-ES', opciones)
-    }
-  return (
-    <View style={styles.contenedor}>
-        <Text style={styles.label}>Paciente:</Text>
-        <Text style={styles.texto}>{paciente}</Text>
-        <Text style={styles.fecha}>{formatearFecha(fecha)}</Text>
 
-        <View style={styles.contenedorBotones}>
-          <Pressable 
-            style={[styles.btn, styles.btnEditar]}
+    return (
+        <Pressable
             onLongPress={() => {
-              setModalVisible(true)
-              pacienteEditar(id)
+                setModalPaciente(true)
+                setPaciente(item)
             }}
-          >
-            <Text style={styles.btnTexto}>Editar</Text>
-          </Pressable>
+        >
+            <View style={styles.contenedor}>
+                <Text style={styles.label}>Paciente:</Text>
+                <Text style={styles.texto}>{paciente}</Text>
+                <Text style={styles.fecha}>{formatearFecha(fecha)}</Text>
 
-          <Pressable style={[styles.btn, styles.btnEliminar]}>
-          <Text style={styles.btnTexto}>Eliminar</Text>
-          </Pressable>          
-        </View>
-    </View>
-  )
+                <View style={styles.contenedorBotones}>
+                    <Pressable 
+                        style={[styles.btn, styles.btnEditar ]}
+                        onLongPress={ () => {
+                            setModalVisible(true)
+                            pacienteEditar(id)
+                        }}
+                    >
+                        <Text style={styles.btnTexto}>Editar</Text>
+                    </Pressable>
+
+                    <Pressable 
+                        style={[styles.btn, styles.btnEliminar ]}
+                        onLongPress={ () => pacienteEliminar(id)}
+                    >
+                        <Text style={styles.btnTexto}>Eliminar</Text>
+                    </Pressable>
+                </View>
+            </View>
+        </Pressable>
+        
+    )
 }
-
 const styles = StyleSheet.create({
-  contenedor: {
-    backgroundColor: '#FFF',
-    padding: 20,
-    borderBottomColor: '#94a38B8',
-    borderBottomWidth: 1
-  },
-  label: {
-    color: '#374151',
-    textTransform: 'uppercase',
-    marginBottom: 18,
-    fontWeight: '700',
-  }, 
-  texto: {
-    color: '#6D28D9',
-    fontSize: 24,
-    marginBottom: 10,
-    fontWeight: '700',
-  },
-  fecha: {
-    color: '#374151'
-  },
-  contenedorBotones: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    marginTop: 20
-  },
-  btn: {
-    paddingVertical: 5,
-    paddingHorizontal: 20,
-    borderRadius: 5
-  },
-  btnEditar: {
-    backgroundColor: '#F59E0B'
-  },
-  btnEliminar: {
-    backgroundColor: '#EF4444'
-  },
-  btnTexto: {
-    textTransform: 'uppercase',
-    fontWeight: '700',
-    fontSize: 12,
-    color: '#FFF'
-  }
+    contenedor: {
+        backgroundColor: '#FFF',
+        padding: 20,
+        borderBottomColor: '#94a3B8',
+        borderBottomWidth: 1
+    },
+    label: {
+        color: '#374151',
+        textTransform: 'uppercase',
+        fontWeight: '700',
+        marginBottom: 10
+    },
+    texto: {
+        color: '#6D28D9',
+        fontSize: 24,
+        fontWeight: '700',
+        marginBottom: 10
+    },
+    fecha: {
+        color: '#374151'
+    },
+    contenedorBotones: {
+        flexDirection: 'row',
+        justifyContent: 'space-between',
+        marginTop: 20
+    },
+    btn: {
+        paddingVertical: 5,
+        paddingHorizontal: 20,
+        borderRadius: 5
+    },
+    btnEditar: {
+        backgroundColor: '#F59E0B'
+    },
+    btnEliminar: {
+        backgroundColor: '#EF4444'
+    },
+    btnTexto: {
+        textTransform: 'uppercase',
+        fontWeight: '700',
+        fontSize: 12,
+        color: '#FFF'
+    }
+
 })
 
 export default Paciente
